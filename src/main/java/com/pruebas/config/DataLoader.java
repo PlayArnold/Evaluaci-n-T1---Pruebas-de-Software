@@ -33,8 +33,8 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
         if (cursoRepository.count() == 0) {
-            cursoRepository.save(curso("Pruebas de Software", 450.0, 30));
             cursoRepository.save(curso("Seguridad de Aplicaciones", 380.0, 25));
+            cursoRepository.save(curso("Pruebas de Software", 450.0, 30));
             cursoRepository.save(curso("Base de Datos II", 420.0, 20));
         }
         if (inscripcionRepository.count() == 0) {

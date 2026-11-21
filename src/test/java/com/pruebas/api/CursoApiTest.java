@@ -18,4 +18,16 @@ class CursoApiTest {
                 .statusCode(200)
                 .body("$", hasSize(greaterThanOrEqualTo(3)));
     }
+
+    @Test
+    void consultarCursoPorId() {
+
+        given()
+                .when()
+                .get("http://localhost:8080/api/cursos/1")
+                .then()
+                .statusCode(200)
+                .body("nombre", org.hamcrest.Matchers.equalTo("Seguridad de Aplicaciones"))
+                .body("vacantes", org.hamcrest.Matchers.greaterThan(0));
+    }
 }
