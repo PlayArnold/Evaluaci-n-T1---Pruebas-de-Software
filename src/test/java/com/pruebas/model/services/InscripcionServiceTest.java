@@ -63,4 +63,20 @@ class InscripcionServiceTest {
 
         verify(repository, never()).save(any(Inscripcion.class));
     }
+
+    @Test
+    void cancelarInscripcionExistente() {
+
+        Inscripcion inscripcion = new Inscripcion();
+        inscripcion.setId(1L);
+        inscripcion.setCodigoEstudiante("I202504447");
+        inscripcion.setCursoId(3L);
+
+        when(repository.findById(1L))
+                .thenReturn(java.util.Optional.of(inscripcion));
+
+        assertDoesNotThrow(() -> service.cancelar(1L));
+
+        verify(repository, times(1)).delete(inscripcion);
+    }
 }
